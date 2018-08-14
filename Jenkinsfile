@@ -16,8 +16,7 @@ stage('build') {
 stage('build docker image') {
     node {
       sh "whoami;   env;    docker info"
-      def customImage = docker.build("my-image:latest --build-arg JAR_FILE=target/gs-spring-boot-docker-0.1.0.jar")
-      customImage.push()
+      sh "docker build --build-arg JAR_FILE=target/gs-spring-boot-docker-0.1.0.jar . -t myspringboot:latest "
     }
 }
 
