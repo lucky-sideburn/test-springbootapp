@@ -15,7 +15,7 @@ stage('build') {
 
 stage('build docker image') {
     node {
-      sh "docker info"
+      sh "whoami;   env;    docker info"
     }
 }
 
