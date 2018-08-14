@@ -16,7 +16,7 @@ stage('build docker image') {
     node(label: 'docker'){
       pom = readMavenPom file: 'pom.xml'
       pom.version
-      repo_docker_base = "docker-registry-default.origin36.local/devopsguru/"
+      repo_docker_base = "docker-registry-default.origin36.local:443/devopsguru/"
       echo "Versione Pom: " +  pom.version
       echo "Versione Artefatto: " + pom.artifactId
       jar_file = pom.artifactId + "-" + pom.version + ".jar"
