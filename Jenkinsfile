@@ -7,7 +7,7 @@ stage('build') {
         checkout scm
         def v = version()
         currentBuild.displayName = "${env.BRANCH_NAME}-${v}-${env.BUILD_NUMBER}"
-        mvn "-f complete/pom.xml clean verify"
+        mvn "clean verify"
     }
 }
 
