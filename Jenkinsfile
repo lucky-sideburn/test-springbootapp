@@ -1,5 +1,5 @@
 #!groovy​
-agent { label 'docker' }
+agent { label 'dockewwxr' }
 
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
 
