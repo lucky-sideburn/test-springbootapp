@@ -15,6 +15,9 @@ stage('build') {
 
 stage('build docker image') {
     node {
+      pom = readMavenPom file: 'pom.xml'
+      pom.version
+      echo pom.version
       sh "whoami;   env;    docker info"
       sh "docker build --build-arg JAR_FILE=target/gs-spring-boot-docker-0.1.0.jar . -t myspringboot:latest "
     }
