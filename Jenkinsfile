@@ -1,4 +1,5 @@
 #!groovy​
+agent { label 'docker' }
 
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
 
@@ -7,7 +8,14 @@ stage('build') {
         checkout scm
         def v = version()
         currentBuild.displayName = "${env.BRANCH_NAME}-${v}-${env.BUILD_NUMBER}"
-        mvn "clean verify"
+        echo currentBuild.displayName
+        mvn "clean install verify"
+    }
+}
+
+stage('build docker image') {
+    node {
+      sh "docker info"
     }
 }
 
