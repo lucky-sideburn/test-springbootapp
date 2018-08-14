@@ -3,7 +3,7 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', numToKeepStr: '10']]])
 
 stage('build') {
-    node(label: 'slave') {
+    node(label: 'docker') {
         checkout scm
         def v = version()
         currentBuild.displayName = "${env.BRANCH_NAME}-${v}-${env.BUILD_NUMBER}"
@@ -13,7 +13,7 @@ stage('build') {
 }
 
 stage('build docker image') {
-    node(label: 'slave'){
+    node(label: 'docker'){
       pom = readMavenPom file: 'pom.xml'
       pom.version
       repo_docker_base = "https://docker-registry-default.origin36.local/devopsguru/"
