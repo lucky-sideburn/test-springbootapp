@@ -28,7 +28,7 @@ stage('build docker image') {
 
 stage('push docker to Openshift registry') { 
    node(label: 'docker'){
-      echo image_name
+      sh "docker push " + image_name
     }
 }
 def mvn(String goals) {
