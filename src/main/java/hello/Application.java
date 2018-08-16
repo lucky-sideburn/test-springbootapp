@@ -11,7 +11,7 @@ public class Application {
 
     @RequestMapping("/")
     public String home() {
-        return "Hello Docker World! And CI for Openshift!";
+        return "Hello Docker World! And CI for Openshift! ferie!";
     }
 
     public static void main(String[] args) {
